@@ -1,22 +1,26 @@
 <html>
     <head>
         <title>Django Girls blog</title>
+        <style ="text/css">
+            @import url('https://fonts.googleapis.com/css?family=Quicksand');
+            body {background-color: #000000; color: #333333; font: 15px 'Quicksand';}
+            h1 {color: #ffffff; font: 50px 'Quicksand';}
+            a:link {color: #cccccc; text-decoration: none;}
+            a:visited {color: #cccccc}
+            a:hover {color: #333333}
+            a:active {color: #cccccc}
+        </style>
     </head>
     <body>
-        <div>
+        <div style="position: relative; top: 50px; left: 100px; width: 500px;">
             <h1><a href="/">Django Girls Blog</a></h1>
-        </div>
-
-        <div>
-            <p>published: 14.06.2014, 12:14</p>
-            <h2><a href="">My first post</a></h2>
-            <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-        </div>
-
-        <div>
-            <p>published: 14.06.2014, 12:14</p>
-            <h2><a href="">My second post</a></h2>
-            <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut f.</p>
-        </div>
+            {% for post in posts %}
+                <div>
+                    <p>Published on: {{ post.published_date }}</p>
+                    <p>By: {{ post.author }}</p>
+                        <h2><a href="">{{ post.title }}</a></h2>
+                        <p>{{ post.text|linebreaksbr }}</p>
+                </div>
+            {% endfor %}
     </body>
 </html>
